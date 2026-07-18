@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.html">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="app.py">
+  
+    <title>Document</title>
+</head>
+<body>
+        
+              <header>
+    <nav class="barra-navegacion">
+      <ul class="menu-lista">
+        <li class="activo-nav">
+          <a href="vision.html" class="nav-activo-link">VISION</a>
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span class="nav-toggle-label activo">VISION</span>
+            <span class="nav-arrow">&#9660;</span>
+          </button>
+        </li>
+        <li><a href="inicio.html">INICIO</a></li>
+        <li><a href="index.html">CALCULADORA</a></li>
+        <li><a href="sobrenosotros.html">SOBRE NOSOTROS</a></li>
+        <li><a href="mision.html">MISION</a></li>
+        <li><a href="futurosproyectos.html">FUTUROS PROYECTOS</a></li>
+        <li><a href="desarrolladores.html">DESARROLLADORES</a></li>
+      </ul>
+    </nav>
+  </header>
+  <script>
+  (function(){
+    var lista = document.querySelector(".menu-lista");
+    var toggle = document.querySelector(".nav-toggle");
+    if(!lista || !toggle) return;
+    toggle.addEventListener("click", function(){
+      var abierto = lista.classList.toggle("abierto");
+      toggle.setAttribute("aria-expanded", String(abierto));
+      var arrow = toggle.querySelector(".nav-arrow");
+      if(arrow) arrow.classList.toggle("rotado");
+    });
+    // Cerrar al hacer clic en enlace
+    lista.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        lista.classList.remove("abierto");
+        toggle.setAttribute("aria-expanded","false");
+        var arrow = toggle.querySelector(".nav-arrow");
+        if(arrow) arrow.classList.remove("rotado");
+      });
+    });
+  })();
+  </script>
+<section class="seccion-vision">
+    <span class="vision-label">VISION</span>
+    <div class="vision-divider"></div>
+    <p class="vision-texto">
+        Desarrollar una calculadora científica web moderna, intuitiva y eficiente que permita a los usuarios realizar operaciones matemáticas básicas y avanzadas desde cualquier dispositivo con acceso a internet. La aplicación estará diseñada con una interfaz atractiva y fácil de usar, ofreciendo rapidez, precisión y una experiencia interactiva para estudiantes, docentes, profesionales y cualquier persona que necesite resolver cálculos matemáticos.
+
+La calculadora incluirá funciones aritméticas (suma, resta, multiplicación y división), operaciones científicas como raíces cuadradas, potencias, logaritmos, funciones trigonométricas (seno, coseno y tangente), constantes matemáticas (π y e) y manejo de expresiones complejas. El procesamiento de los cálculos se realizará de manera segura en el servidor utilizando Python y Flask, garantizando resultados confiables y precisos.
+
+El objetivo es proporcionar una herramienta accesible, responsiva y funcional que combine diseño moderno con tecnología web, facilitando el aprendizaje y la resolución de problemas matemáticos en cualquier momento y lugar.
+    </p>
+</section>
+</html>

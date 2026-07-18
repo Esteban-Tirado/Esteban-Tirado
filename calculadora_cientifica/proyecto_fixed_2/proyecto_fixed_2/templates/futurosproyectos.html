@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora científica web para realizar operaciones matemáticas básicas y avanzadas.">
+    <meta name="keywords" content="calculadora, científica, matemáticas, web">
+    <meta name="author" content="Tu Nombre">
+    <title>Document</title>
+  <link rel="stylesheet" href="index.html">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="app.py">
+
+</head>
+<body>
+         <header>
+    <nav class="barra-navegacion">
+      <ul class="menu-lista">
+        <li class="activo-nav">
+          <a href="futurosproyectos.html" class="nav-activo-link">FUTUROS PROYECTOS</a>
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span class="nav-toggle-label activo">FUTUROS PROYECTOS</span>
+            <span class="nav-arrow">&#9660;</span>
+          </button>
+        </li>
+        <li><a href="inicio.html">INICIO</a></li>
+        <li><a href="index.html">CALCULADORA</a></li>
+        <li><a href="sobrenosotros.html">SOBRE NOSOTROS</a></li>
+        <li><a href="mision.html">MISION</a></li>
+        <li><a href="vision.html">VISION</a></li>
+        <li><a href="desarrolladores.html">DESARROLLADORES</a></li>
+      </ul>
+    </nav>
+  </header>
+  <script>
+  (function(){
+    var lista = document.querySelector(".menu-lista");
+    var toggle = document.querySelector(".nav-toggle");
+    if(!lista || !toggle) return;
+    toggle.addEventListener("click", function(){
+      var abierto = lista.classList.toggle("abierto");
+      toggle.setAttribute("aria-expanded", String(abierto));
+      var arrow = toggle.querySelector(".nav-arrow");
+      if(arrow) arrow.classList.toggle("rotado");
+    });
+    // Cerrar al hacer clic en enlace
+    lista.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        lista.classList.remove("abierto");
+        toggle.setAttribute("aria-expanded","false");
+        var arrow = toggle.querySelector(".nav-arrow");
+        if(arrow) arrow.classList.remove("rotado");
+      });
+    });
+  })();
+  </script>
+<section class="seccion-vision">
+    <span class="vision-label">FUTUROS PROYECTOS</span>
+    <div class="vision-divider"></div>
+    <p class="vision-texto">
+      <strong>NUESTRO PROYECTO SIGUIENTE</strong>
+      <BR></BR>
+        Plataforma de Gestión y Reserva de Citas
+
+Como parte de nuestro crecimiento, planeamos desarrollar una plataforma web para la gestión y reserva de citas en línea. Este sistema permitirá a los usuarios agendar, modificar y cancelar citas de manera rápida y segura desde cualquier dispositivo con acceso a internet.
+
+La plataforma contará con funcionalidades como:
+
+Registro e inicio de sesión de usuarios.
+Calendario interactivo para seleccionar fechas y horarios disponibles.
+Confirmación automática de citas.
+Notificaciones y recordatorios.
+Panel de administración para gestionar clientes y horarios.
+Diseño responsivo adaptable a computadoras, tabletas y teléfonos móviles.
+
+Este proyecto busca optimizar la organización de citas para negocios, consultorios, instituciones educativas y profesionales independientes, mejorando la experiencia tanto de los administradores como de los clientes.
+    </p>
+
+
+</body>
+</html>

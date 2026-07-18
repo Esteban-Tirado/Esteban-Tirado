@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.html">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="app.py">
+  
+    <title>Document</title>
+</head>
+<body>
+                <header>
+    <nav class="barra-navegacion">
+      <ul class="menu-lista">
+        <li class="activo-nav">
+          <a href="sobrenosotros.html" class="nav-activo-link">SOBRE NOSOTROS</a>
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span class="nav-toggle-label activo">SOBRE NOSOTROS</span>
+            <span class="nav-arrow">&#9660;</span>
+          </button>
+        </li>
+        <li><a href="inicio.html">INICIO</a></li>
+        <li><a href="index.html">CALCULADORA</a></li>
+        <li><a href="mision.html">MISION</a></li>
+        <li><a href="vision.html">VISION</a></li>
+        <li><a href="futurosproyectos.html">FUTUROS PROYECTOS</a></li>
+        <li><a href="desarrolladores.html">DESARROLLADORES</a></li>
+      </ul>
+    </nav>
+  </header>
+  <script>
+  (function(){
+    var lista = document.querySelector(".menu-lista");
+    var toggle = document.querySelector(".nav-toggle");
+    if(!lista || !toggle) return;
+    toggle.addEventListener("click", function(){
+      var abierto = lista.classList.toggle("abierto");
+      toggle.setAttribute("aria-expanded", String(abierto));
+      var arrow = toggle.querySelector(".nav-arrow");
+      if(arrow) arrow.classList.toggle("rotado");
+    });
+    // Cerrar al hacer clic en enlace
+    lista.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        lista.classList.remove("abierto");
+        toggle.setAttribute("aria-expanded","false");
+        var arrow = toggle.querySelector(".nav-arrow");
+        if(arrow) arrow.classList.remove("rotado");
+      });
+    });
+  })();
+  </script>
+<section class="seccion-vision">
+    <span class="vision-label">SOBRE NOSOTROS</span>
+    <div class="vision-divider"></div>
+    <p class="vision-texto">
+        Sobre Nosotros
+
+Somos un equipo apasionado por la tecnología y la innovación, dedicado al desarrollo de herramientas digitales que faciliten la resolución de problemas matemáticos. Nuestra Calculadora Científica Web fue creada con el objetivo de ofrecer una solución práctica, rápida y precisa para estudiantes, docentes, profesionales y cualquier persona que necesite realizar cálculos de manera eficiente.
+
+Nos enfocamos en brindar una experiencia sencilla e intuitiva, combinando un diseño moderno con funcionalidades avanzadas que permitan realizar desde operaciones básicas hasta cálculos científicos complejos. Nuestro compromiso es ofrecer una plataforma confiable, accesible y en constante mejora para satisfacer las necesidades de nuestros usuarios.
+
+Trabajamos día a día para seguir incorporando nuevas funcionalidades y mejorar el rendimiento de nuestra aplicación, contribuyendo al aprendizaje y al desarrollo académico y profesional de nuestra comunidad.
+    </p>
+
+</body>
+</html>

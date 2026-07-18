@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desarrolladores — Solar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    /* ── Page base ── */
+    
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+
+  <header>
+    <nav class="barra-navegacion">
+      <ul class="menu-lista">
+        <li class="activo-nav">
+          <a href="desarrolladores.html" class="nav-activo-link">DESARROLLADORES</a>
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span class="nav-toggle-label activo">DESARROLLADORES</span>
+            <span class="nav-arrow">&#9660;</span>
+          </button>
+        </li>
+        <li><a href="inicio.html">INICIO</a></li>
+        <li><a href="index.html">CALCULADORA</a></li>
+        <li><a href="sobrenosotros.html">SOBRE NOSOTROS</a></li>
+        <li><a href="mision.html">MISION</a></li>
+        <li><a href="vision.html">VISION</a></li>
+        <li><a href="futurosproyectos.html">FUTUROS PROYECTOS</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <script>
+  (function(){
+    var lista = document.querySelector(".menu-lista");
+    var toggle = document.querySelector(".nav-toggle");
+    if(!lista || !toggle) return;
+    toggle.addEventListener("click", function(){
+      var abierto = lista.classList.toggle("abierto");
+      toggle.setAttribute("aria-expanded", String(abierto));
+      var arrow = toggle.querySelector(".nav-arrow");
+      if(arrow) arrow.classList.toggle("rotado");
+    });
+    lista.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        lista.classList.remove("abierto");
+        toggle.setAttribute("aria-expanded","false");
+        var arrow = toggle.querySelector(".nav-arrow");
+        if(arrow) arrow.classList.remove("rotado");
+      });
+    });
+  })();
+  </script>
+
+  <section class="seccion-devs">
+
+    <div class="devs-header">
+      <h2 class="devs-label">DESARROLLADORES</h2>
+      <div class="devs-divider-h"></div>
+      <span class="devs-count">06 PERSONAS</span>
+    </div>
+
+    <div class="devs-grid">
+
+      <!-- Dev 1 -->
+      <article class="dev-card">
+        <div class="dev-avatar av-blue">JB</div>
+        <h3 class="dev-name">JESUS BORJA</h3>
+        <span class="dev-role">Líder del Proyecto</span>
+        <div class="dev-divider"></div>
+        <p class="dev-bio">PROGRAMADOR</p>
+        <div class="dev-skills">
+          <span class="dev-skill">Python</span>
+          <span class="dev-skill">HTML</span>
+          <span class="dev-skill">CSS</span>
+        </div>
+      </article>
+
+      <!-- Dev 2 -->
+      <article class="dev-card">
+        <div class="dev-avatar av-purple">ET</div>
+        <h3 class="dev-name">ESTEBAN TIRADO</h3>
+        <span class="dev-role">2 LIDER</span>
+        <div class="dev-divider"></div>
+        <p class="dev-bio">2 PROGRAMADOR</p>
+        <div class="dev-skills">
+          <span class="dev-skill">CSS</span>
+          <span class="dev-skill">PYTHON</span>
+          <span class="dev-skill">HTML</span>
+        </div>
+      </article>
+
+      <!-- Dev 3 -->
+      <article class="dev-card">
+        <div class="dev-avatar av-teal">LA</div>
+        <h3 class="dev-name">LUIS ANGULO</h3>
+        <span class="dev-role">DOCUMENTADOR</span>
+        <div class="dev-divider"></div>
+        <p class="dev-bio">DOCUMENTADOR DE TODA LA INFORMACION DE NUESTRO CODIGO.</p>
+        <div class="dev-skills">
+          <span class="dev-skill">JavaScript</span>
+          <span class="dev-skill">HTML</span>
+          <span class="dev-skill">CSS</span>
+        </div>
+      </article>
+
+      <!-- Dev 4 -->
+      <article class="dev-card">
+        <div class="dev-avatar av-rose">RC</div>
+        <h3 class="dev-name">RONALDO CONTRERAS</h3>
+        <span class="dev-role">2 DOCUMENTADOR</span>
+        <div class="dev-divider"></div>
+        <p class="dev-bio">DOCUMENTADOR DE TODA LA INFORMACION DE NUESTRO CODIGO</p>
+        <div class="dev-skills">
+          <span class="dev-skill">Python</span>
+          <span class="dev-skill">Flask</span>
+          <span class="dev-skill">HTML</span>
+        </div>
+      </article>
+
+      <!-- Dev 5 -->
+      <article class="dev-card">
+        <div class="dev-avatar av-amber">LA</div>
+        <h3 class="dev-name">LEONARDO ACOSTA</h3>
+        <span class="dev-role">CREADOR DEL MANUAL DE INSTRUCIONES</span>
+        <div class="dev-divider"></div>
+        <p class="dev-bio">Y Redactó los textos de misión, visión, sobre nosotros y futuros proyectos con enfoque comunicativo.</p>
+        <div class="dev-skills">
+          <span class="dev-skill">Redacción</span>
+          <span class="dev-skill">CSS</span>
+          <span class="dev-skill">HTML</span>
+        </div>
+      </article>
+
+      <!-- Dev 6 -->
+      <article class="dev-card">
+        <div class="dev-avatar av-green">MV</div>
+        <h3 class="dev-name">MAURICIO VALOY</h3>
+        <span class="dev-role">2 CREADOR DEL MANUAL DE INSTRUCIONES</span>
+        <div class="dev-divider"></div>
+        <p class="dev-bio">Redactó los textos de misión, visión, sobre nosotros y futuros proyectos con enfoque comunicativo.</p>
+        <div class="dev-skills">
+          <span class="dev-skill">HTML</span>
+          <span class="dev-skill">PYTHON</span>
+          <span class="dev-skill">CSS</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calculadora-cientifica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.html">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="app.py">
+</head>
+<body class="inicio">
+    <header>
+    <nav class="barra-navegacion">
+      <ul class="menu-lista">
+        <li class="activo-nav">
+          <a href="inicio.html" class="nav-activo-link">INICIO</a>
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span class="nav-toggle-label activo">INICIO</span>
+            <span class="nav-arrow">&#9660;</span>
+          </button>
+        </li>
+        <li><a href="index.html">CALCULADORA</a></li>
+        <li><a href="sobrenosotros.html">SOBRE NOSOTROS</a></li>
+        <li><a href="mision.html">MISION</a></li>
+        <li><a href="vision.html">VISION</a></li>
+        <li><a href="futurosproyectos.html">FUTUROS PROYECTOS</a></li>
+        <li><a href="desarrolladores.html">DESARROLLADORES</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+  <script>
+  (function(){
+    var lista = document.querySelector(".menu-lista");
+    var toggle = document.querySelector(".nav-toggle");
+    if(!lista || !toggle) return;
+    toggle.addEventListener("click", function(){
+      var abierto = lista.classList.toggle("abierto");
+      toggle.setAttribute("aria-expanded", String(abierto));
+      var arrow = toggle.querySelector(".nav-arrow");
+      if(arrow) arrow.classList.toggle("rotado");
+    });
+    // Cerrar al hacer clic en enlace
+    lista.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        lista.classList.remove("abierto");
+        toggle.setAttribute("aria-expanded","false");
+        var arrow = toggle.querySelector(".nav-arrow");
+        if(arrow) arrow.classList.remove("rotado");
+      });
+    });
+  })();
+  </script>
+  <div class="bg-glow"></div>
+  <section id="inicio">
+
+  <div class="badge">
+    <span class="badge-dot"></span>
+    calculadora cientifica_Plataforma
+  </div>
+  <img src="logo.png" alt="Logo" class="hero-logo">
+  
+  <h1 class="hero-title">
+    BIENVENIDOS<br>
+    <span class="line2"> <span class="accent"></span></span>
+  </h1>
+
+  <p class="hero-sub">
+    Todo lo que necesitas para realizar cálculos matemáticos de forma rápida y precisa está a un clic de distancia. Explora el menú superior: allí encontrarás nuestra calculadora científica, información sobre nosotros, nuestra misión, visión y los futuros proyectos que estamos desarrollando para mejorar tu experiencia.
+    <p>
+
+  <div class="section-label">
+    <span>Guía del menú</span>
+    <hr>
+  </div>
+
+  <div class="menu-list">
+
+    <div class="menu-item">
+      <div class="item-icon icon-green">&#8962;</div>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="item-name">Inicio</span>
+          <span class="item-tag tag-here">Estás aquí</span>
+          
+        </div>
+        <p class="item-desc">Punto de partida de la plataforma. Aquí encuentras la bienvenida, una visión general del sitio y orientación para saber por dónde comenzar tu recorrido.</p>
+      </div>
+      <span class="item-num">01</span>
+    </div>
+
+    <a href="index.html"
+    class="menu-item">
+      <div class="item-icon icon-blue">&#9783;</div>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="item-name">Calculadora</span>
+        </div>
+        <p class="item-desc">Aqui encontraras nuestra calculadora Diseñada para estudiantes, docentes y profesionales, esta herramienta te permite realizar operaciones matemáticas de manera rápida, precisa e intuitiva.</p>
+      </div>
+      <span class="item-num">02</span> 
+    </div>
+    </a>
+
+    <a href="sobrenosotros.html"
+    class="menu-item">
+      <div class="item-icon icon-purple">&#9752;</div>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="item-name">Sobre nosotros </span>
+        </div>
+        <p class="item-desc">Conoce la historia de la empresa, el equipo detrás del proyecto y los valores que nos mueven cada día mejorar para ustedes </p>
+      </div>
+      <span class="item-num">03</span>
+      </a>
+      
+    </div>
+   <a href="mision.html"
+    class="menu-item">
+      <div class="item-icon icon-amber">&#9678;</div>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="item-name">Misión</span>
+        </div>
+        <p class="item-desc">
+         Aquí verás nuestra misión y es brindar una calculadora científica intuitiva y confiable, permitiendo a estudiantes, docentes y profesionales realizar operaciones matemáticas de manera rápida, sencilla y precisa desde cualquier lugar.
+         </p>
+      </div>
+      <span class="item-num">04</span>
+    </div>
+    </a>
+
+    <a href="vision.html"
+    class="menu-item">
+      <div class="item-icon icon-teal">&#9681;</div>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="item-name">Visión</span>
+        </div>
+        <p class="item-desc">Aquí verás nuestra visión el futuro que queremos es ser la calculadora científica web más confiables y utilizadas, brindando una experiencia rápida, moderna y eficiente para usuarios de todos los niveles.
+</p>
+      </div>
+      <span class="item-num">05</span>
+    </div>
+    </a>
+
+ <a href="futurosproyectos.html"
+    class="menu-item">
+      <div class="item-icon icon-coral">&#9654;</div>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="item-name">Futuros proyectos</span>
+        </div>
+        <p class="item-desc">Explora lo que viene: nuevas tecnologías, expansiones y proyectos en desarrollo.</p>
+      </div>
+      <span class="item-num">06</span>
+    </div>
+   </a>
+
+
+    <a href="desarrolladores.html"
+    class="menu-item">
+      <div class="item-icon icon-coral">&#9560;</div>
+      <div class="item-body">
+        <div class="item-top">
+          <span class="item-name">Desarrolladores</span>
+        </div>
+        <p class="item-desc">Aqui encontrarás a nuestros desarrolladores, cuyas personas fueron capaces de hacer esta pagina realidad</p>
+      </div>
+      <span class="item-num">07</span>
+    </div>
+   </a>
+  </div>
+</section>
+
+</body>
+</html>

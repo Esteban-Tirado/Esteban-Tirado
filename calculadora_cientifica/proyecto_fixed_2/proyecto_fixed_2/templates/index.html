@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora — Solar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/index.css">
+  <style>
+
+  </style>
+</head>
+<body class="inicio">
+
+  <div class="bg-glow"></div>
+
+  <header>
+    <nav class="barra-navegacion">
+      <ul class="menu-lista">
+        <li class="activo-nav">
+          <a href="index.html" class="nav-activo-link">CALCULADORA</a>
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span class="nav-toggle-label activo">CALCULADORA</span>
+            <span class="nav-arrow">&#9660;</span>
+          </button>
+        </li>
+        <li><a href="inicio.html">INICIO</a></li>
+        <li><a href="sobrenosotros.html">SOBRE NOSOTROS</a></li>
+        <li><a href="mision.html">MISION</a></li>
+        <li><a href="vision.html">VISION</a></li>
+        <li><a href="futurosproyectos.html">FUTUROS PROYECTOS</a></li>
+        <li><a href="desarrolladores.html">DESARROLLADORES</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <script>
+  (function(){
+    var lista = document.querySelector(".menu-lista");
+    var toggle = document.querySelector(".nav-toggle");
+    if(!lista || !toggle) return;
+    toggle.addEventListener("click", function(){
+      var abierto = lista.classList.toggle("abierto");
+      toggle.setAttribute("aria-expanded", String(abierto));
+      var arrow = toggle.querySelector(".nav-arrow");
+      if(arrow) arrow.classList.toggle("rotado");
+    });
+    lista.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        lista.classList.remove("abierto");
+        toggle.setAttribute("aria-expanded","false");
+        var arrow = toggle.querySelector(".nav-arrow");
+        if(arrow) arrow.classList.remove("rotado");
+      });
+    });
+  })();
+  </script>
+  
+
+
+  <div class="wrap">
+    <div class="disp">
+      <div class="disp-top">
+        <span class="mode" id="modeLabel">DEG</span>
+        <button class="hist-btn" onclick="toggleHist()" title="Historial">⟳</button>
+      </div>
+      <div class="expr" id="exprLine"></div>
+      <div class="result" id="resultLine">0</div>
+    </div>
+    <div class="hist-panel" id="histPanel">
+      <h3>HISTORIAL</h3>
+      <div id="histList"><p style="color:var(--muted);font-size:13px">Sin historial aún</p></div>
+    </div>
+    <div class="keys">
+      <button class="bm active" id="btnDeg" onclick="setModo('deg')">Deg</button>
+      <button class="bm"        id="btnRad" onclick="setModo('rad')">Rad</button>
+      <button class="bf" onclick="ins('factorial(')">x!</button>
+      <button class="bf" onclick="ins('(')"> ( </button>
+      <button class="bf" onclick="ins(')')"> ) </button>
+      <button class="bac" onclick="limpiar()">AC</button>
+
+      <button class="bf" onclick="toggleInv()">Inv</button>
+      <button class="bf" id="sinBtn" onclick="insFn('sin')">sin</button>
+      <button class="bf" onclick="ins('ln(')">ln</button>
+      <button class="bn" onclick="ins('7')">7</button>
+      <button class="bn" onclick="ins('8')">8</button>
+      <button class="bn" onclick="ins('9')">9</button>
+
+      <button class="bf" onclick="ins('π')">π</button>
+      <button class="bf" id="cosBtn" onclick="insFn('cos')">cos</button>
+      <button class="bf" onclick="ins('log(')">log</button>
+      <button class="bn" onclick="ins('4')">4</button>
+      <button class="bn" onclick="ins('5')">5</button>
+      <button class="bn" onclick="ins('6')">6</button>
+
+      <button class="bf" onclick="ins('e')">e</button>
+      <button class="bf" id="tanBtn" onclick="insFn('tan')">tan</button>
+      <button class="bf" onclick="ins('sqrt(')">√</button>
+      <button class="bn" onclick="ins('1')">1</button>
+      <button class="bn" onclick="ins('2')">2</button>
+      <button class="bn" onclick="ins('3')">3</button>
+
+      <button class="bf" onclick="ins(lastResult)">Ans</button>
+      <button class="bf" onclick="ins('exp(')">EXP</button>
+      <button class="bf" onclick="ins('^')">xʸ</button>
+      <button class="bn" onclick="ins('0')">0</button>
+      <button class="bn" onclick="ins('.')">.</button>
+      <button class="beq" onclick="calcular()">=</button>
+
+      <button class="bf" onclick="ins('%')">%</button>
+      <button class="bo" onclick="ins('÷')">÷</button>
+      <button class="bo" onclick="ins('×')">×</button>
+      <button class="bo" onclick="ins('-')">−</button>
+      <button class="bo" onclick="ins('+')">+</button>
+      <button class="bdel" onclick="borrar()">⌫</button>
+    </div>
+  </div>
+
+<script>
+let expr='', lastResult='0', modo='deg', inv=false;
+const exprLine=document.getElementById('exprLine');
+const resultLine=document.getElementById('resultLine');
+const history=[];
+
+function upd(){
+  exprLine.textContent=expr;
+  exprLine.scrollLeft=exprLine.scrollWidth;
+  resultLine.classList.toggle('small',resultLine.textContent.length>14);
+}
+function ins(v){expr+=v;resultLine.className='result';upd()}
+function insFn(fn){
+  const map={sin:inv?'asin(':'sin(',cos:inv?'acos(':'cos(',tan:inv?'atan(':'tan('};
+  expr+=map[fn];upd();
+}
+function toggleInv(){
+  inv=!inv;
+  document.getElementById('sinBtn').textContent=inv?'sin⁻¹':'sin';
+  document.getElementById('cosBtn').textContent=inv?'cos⁻¹':'cos';
+  document.getElementById('tanBtn').textContent=inv?'tan⁻¹':'tan';
+}
+function limpiar(){expr='';resultLine.textContent='0';resultLine.className='result';upd()}
+function borrar(){expr=expr.slice(0,-1);upd()}
+function setModo(m){
+  modo=m;
+  document.getElementById('btnDeg').classList.toggle('active',m==='deg');
+  document.getElementById('btnRad').classList.toggle('active',m==='rad');
+  document.getElementById('modeLabel').textContent=m.toUpperCase();
+}
+function calcular(){
+  if(!expr)return;
+  let e=expr;
+  const open=(e.match(/\(/g)||[]).length,close=(e.match(/\)/g)||[]).length;
+  e+=')'.repeat(Math.max(0,open-close));
+  exprLine.textContent=e+' =';
+  try{
+    let s=e;
+    s=s.replace(/\^/g,'**');
+    s=s.replace(/×/g,'*');
+    s=s.replace(/÷/g,'/');
+    s=s.replace(/π/g,'(Math.PI)');
+    s=s.replace(/\be\b/g,'(Math.E)');
+    const deg=modo==='deg';
+    const fns={
+      sin:x=>deg?Math.sin(x*Math.PI/180):Math.sin(x),
+      cos:x=>deg?Math.cos(x*Math.PI/180):Math.cos(x),
+      tan:x=>deg?Math.tan(x*Math.PI/180):Math.tan(x),
+      asin:x=>{const r=Math.asin(x);return deg?r*180/Math.PI:r},
+      acos:x=>{const r=Math.acos(x);return deg?r*180/Math.PI:r},
+      atan:x=>{const r=Math.atan(x);return deg?r*180/Math.PI:r},
+      ln:x=>Math.log(x),
+      log:x=>Math.log10(x),
+      sqrt:x=>Math.sqrt(x),
+      exp:x=>Math.exp(x),
+      abs:x=>Math.abs(x),
+      factorial:n=>{if(n<0||!Number.isInteger(n))throw new Error('Solo enteros positivos');let r=1;for(let i=2;i<=n;i++)r*=i;return r}
+    };
+    s=s.replace(/\b(sin|cos|tan|asin|acos|atan|ln|log|sqrt|exp|abs|factorial)\(/g,'__$1(');
+    const scope={...fns};
+    for(const k in fns)scope['__'+k]=fns[k];
+    const fn=new Function(...Object.keys(scope),'return '+s);
+    let res=fn(...Object.values(scope));
+    if(typeof res==='number'){
+      if(!isFinite(res))throw new Error('Resultado infinito');
+      if(res===Math.floor(res)&&Math.abs(res)<1e15)res=Math.floor(res);
+      else res=parseFloat(res.toPrecision(10));
+    }
+    lastResult=String(res);
+    resultLine.textContent=lastResult;
+    resultLine.className='result'+(lastResult.length>14?' small':'');
+    history.unshift({expr:e,res:lastResult});
+    if(history.length>20)history.pop();
+    expr=lastResult;
+    if(document.getElementById('histPanel').classList.contains('open'))renderHist();
+  }catch(err){
+    resultLine.textContent='Error: '+err.message;
+    resultLine.className='result error';
+  }
+}
+function renderHist(){
+  const hl=document.getElementById('histList');
+  hl.innerHTML=history.length
+    ?history.map(h=>`<div class="hist-item" onclick="ins('${h.res}');toggleHist()"><span class="hi-expr">${h.expr}</span><span class="hi-res">${h.res}</span></div>`).join('')
+    :'<p style="color:var(--muted);font-size:13px">Sin historial aún</p>';
+}
+function toggleHist(){
+  const p=document.getElementById('histPanel');
+  p.classList.toggle('open');
+  if(p.classList.contains('open'))renderHist();
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){calcular();return}
+  if(e.key==='Backspace'){borrar();return}
+  if(e.key==='Escape'){limpiar();return}
+  if('0123456789.+-*/()%^'.includes(e.key))ins(e.key);
+});
+</script>
+</body>
+</html>

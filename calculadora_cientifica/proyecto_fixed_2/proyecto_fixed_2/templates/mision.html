@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.html">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="app.py">
+  
+    <title>Document</title>
+</head>
+<body>
+  
+        <header>
+    <nav class="barra-navegacion">
+      <ul class="menu-lista">
+        <li class="activo-nav">
+          <a href="mision.html" class="nav-activo-link">MISION</a>
+          <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span class="nav-toggle-label activo">MISION</span>
+            <span class="nav-arrow">&#9660;</span>
+          </button>
+        </li>
+        <li><a href="inicio.html">INICIO</a></li>
+        <li><a href="index.html">CALCULADORA</a></li>
+        <li><a href="sobrenosotros.html">SOBRE NOSOTROS</a></li>
+        <li><a href="vision.html">VISION</a></li>
+        <li><a href="futurosproyectos.html">FUTUROS PROYECTOS</a></li>
+        <li><a href="desarrolladores.html">DESARROLLADORES</a></li>
+      </ul>
+    </nav>
+  </header>
+  <script>
+  (function(){
+    var lista = document.querySelector(".menu-lista");
+    var toggle = document.querySelector(".nav-toggle");
+    if(!lista || !toggle) return;
+    toggle.addEventListener("click", function(){
+      var abierto = lista.classList.toggle("abierto");
+      toggle.setAttribute("aria-expanded", String(abierto));
+      var arrow = toggle.querySelector(".nav-arrow");
+      if(arrow) arrow.classList.toggle("rotado");
+    });
+    // Cerrar al hacer clic en enlace
+    lista.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        lista.classList.remove("abierto");
+        toggle.setAttribute("aria-expanded","false");
+        var arrow = toggle.querySelector(".nav-arrow");
+        if(arrow) arrow.classList.remove("rotado");
+      });
+    });
+  })();
+  </script>
+    
+</header>
+<section class="seccion-mision">
+    <span class="mision-label">MISION</span>
+    <div class="mision-divider"></div>
+    <p class="mision-texto">
+        Desarrollar una calculadora científica web que brinde a los usuarios una herramienta 
+        confiable, rápida y fácil de usar para realizar cálculos matemáticos básicos y avanzados. 
+        Mediante el uso de tecnologías web como <strong>HTML, CSS y Python con Flask</strong>, 
+        se busca ofrecer una plataforma accesible desde cualquier dispositivo, que permita 
+        resolver operaciones con precisión, apoyar el <strong>aprendizaje de las matemáticas</strong> 
+        y mejorar la productividad de <strong>estudiantes, docentes y profesionales</strong>.
+    </p>
+</section>
+
+
+</html>
