@@ -25,6 +25,7 @@ Incluye un panel completo de funciones científicas (trigonometría, logaritmos,
 
 Lo que más aprendí: estructurar la lógica compleja de JavaScript sin depender de librerías externas, manipular el DOM de forma avanzada para mantener la pantalla actualizada y controlar eventos de teclado para que responda como una calculadora física real.
 
+-----
 
 ### 🔄 Tarjeta con Movimiento 360°
 Experimento visual interactivo y moderno que desafía los límites del diseño web con CSS avanzado.
